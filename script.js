@@ -245,6 +245,15 @@ function createProjectCard(project) {
     card.className = 'project-card';
     card.dataset.category = project.category;
 
+    // Make the whole card clickable
+    card.addEventListener('click', (event) => {
+        // Ignore clicks on buttons/links inside the card
+        if (event.target.closest('a')) {
+            return;
+        }
+        window.open(project.url, '_blank', 'noopener,noreferrer');
+    });
+
     // Get icon based on language
     const icon = getLanguageIcon(project.language);
 
